@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title%}Booking
+{%endblock%}
+
+{% block content%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hospital Appointment Booking</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container my-5">
+      <h2 class="mb-4">Book an Appointment</h2>
+      <form id="appointment-form">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="patientName">Patient Name</label>
+            <input type="text" class="form-control" id="patientName" placeholder="First & Last Name" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="patientEmail">Email</label>
+            <input type="email" class="form-control" id="patientEmail" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="patientPhone">Phone</label>
+            <input type="tel" class="form-control" id="patientPhone" placeholder="+91 98765 43210" required>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="bookingDate">Date</label>
+            <input type="date" class="form-control" id="bookingDate" required>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="bookingTime">Time</label>
+            <input type="time" class="form-control" id="bookingTime" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="symptoms">Symptoms / Reason</label>
+          <textarea class="form-control" id="symptoms" rows="3" placeholder="Briefly describe your condition" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirm Appointment</button>
+      </form>
+      <div id="confirmation" class="alert alert-success mt-4 d-none">
+        Thank you! Your appointment has been booked.
+      </div>
+    </div>
+
+    <!-- Bootstrap & JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      document.getElementById('appointment-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Here you'd normally send data to your server via AJAX/fetch
+        document.getElementById('confirmation').classList.remove('d-none');
+        this.reset();
+      });
+    </script>
+  </body>
+</html>
+
+{% endblock %}
